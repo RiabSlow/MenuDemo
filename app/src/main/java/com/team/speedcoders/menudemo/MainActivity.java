@@ -5,6 +5,7 @@ import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent,1111);
                 break;
             case 1110:
+                Intent intent2=new Intent(this,Delete.class);
+                startActivityForResult(intent2,1112);
                 break;
         }
         return true;
@@ -84,15 +87,27 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        Toast.makeText(getApplicationContext(),"Here",Toast.LENGTH_SHORT).show();
         if(resultCode==RESULT_OK){
             switch (requestCode){
                 case 1111:
-                    name.add(getIntent().getStringExtra("Name"));
-                    department.add(getIntent().getStringExtra("Dept"));
+                    String nameFromResult = (data.getStringExtra("Name"));
+                    String dptFromResult = (data.getStringExtra("Dept"));
+                    name.add(nameFromResult);
+                    department.add(dptFromResult);
+                    Toast.makeText(getApplicationContext(),"Here"+nameFromResult,Toast.LENGTH_SHORT).show();
                     drawable.add(getResources().getDrawable(getResources().getIdentifier(
                             "person1","drawable",getPackageName()
                     )));
+                    myAddapter.notifyDataSetChanged();
+                    break;
+                case 1112:
+                    String nameForDelete = (data.getStringExtra("Name"));
+                    int in=name.indexOf(nameForDelete);
+                    if( in !=-1){
+                        name.remove(in);
+                        department.remove(in);
+                        drawable.remove(in);
+                    }
                     myAddapter.notifyDataSetChanged();
                     break;
             }
