@@ -7,7 +7,9 @@ import android.os.Bundle;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -41,11 +43,20 @@ public class MainActivity extends AppCompatActivity {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         menu.setHeaderTitle("Select Action").
                 add(0,1901,1,"Show detail");
-        menu.add(0,1902,2,"detel");
+        menu.add(0,1902,2,"Delete");
     }
 
     @Override
     public boolean onContextItemSelected(MenuItem item) {
-        return super.onContextItemSelected(item);
+        AdapterView.AdapterContextMenuInfo contextMenuInfo= (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        switch (item.getItemId()){
+            case 1901:
+                Toast.makeText(this,"Name is "+name.get(contextMenuInfo.position),Toast.LENGTH_SHORT).show();
+                break;
+            case 1902:
+                myAddapter.delete(contextMenuInfo.position);
+                break;
+        }
+        return true;
     }
 }

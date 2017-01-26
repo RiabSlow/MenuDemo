@@ -56,4 +56,11 @@ class MyAddapter extends BaseAdapter {
         viewHolder.department.setText(department.get(position));
         return view;
     }
+
+    void delete(int i){
+        name.remove(i);
+        department.remove(i);
+        images.remove(i);
+        notifyDataSetChanged();
+    }
 }
