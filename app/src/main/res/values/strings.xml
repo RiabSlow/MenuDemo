@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MenuDemo</string>
+    <string name="name">Name</string>
+    <string name="dept">Department</string>
+
+    <string-array name="name">
+        <item>person1</item>
+        <item>person2</item>
+        <item>person3</item>
+        <item>person4</item>
+        <item>person5</item>
+        <item>person6</item>
+    </string-array>
+
+    <string-array name="department">
+        <item>Ice</item>
+        <item>Stat</item>
+        <item>Phy</item>
+        <item>Math</item>
+        <item>Apee</item>
+        <item>Cse</item>
+    </string-array>
+</resources>
