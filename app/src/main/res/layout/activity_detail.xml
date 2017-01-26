@@ -20,5 +20,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/dept_field"
         android:hint="@string/dept"/>
-
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submit"
+        android:id="@+id/submit"/>
 </LinearLayout>

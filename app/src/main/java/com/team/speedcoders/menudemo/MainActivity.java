@@ -84,6 +84,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+        Toast.makeText(getApplicationContext(),"Here",Toast.LENGTH_SHORT).show();
+        if(resultCode==RESULT_OK){
+            switch (requestCode){
+                case 1111:
+                    name.add(getIntent().getStringExtra("Name"));
+                    department.add(getIntent().getStringExtra("Dept"));
+                    drawable.add(getResources().getDrawable(getResources().getIdentifier(
+                            "person1","drawable",getPackageName()
+                    )));
+                    myAddapter.notifyDataSetChanged();
+                    break;
+            }
+        }
     }
 }
